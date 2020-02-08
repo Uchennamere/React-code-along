@@ -53,6 +53,18 @@ import Logo from './map.gif';
 //  const welcome = "Welcome to React";
 
 class App extends Component {
+constructor(props){
+  super(props);
+  console.log('constructor')
+}
+
+componentWillMount(){
+  console.log('will mount') 
+}
+componentDidMount(){
+  console.log('mounted')
+}
+
   state = {
     toggle: true,
     newText: "This is the new text",
@@ -73,8 +85,8 @@ class App extends Component {
       newText: !this.state.newText
     })
   }
-//changecolor function using ternary operat0r, this reutrns true or false. the ? 
-//chcks if the condition if true and the : let us toggle btw the two condition
+//changecolor function using ternary operat0r, this returns true or false. the ? 
+//checks if the condition if true and the : let us toggle btw the two condition
   changeColor = () => {
     this.state.backgroundColor === "#282c34" ?
     this.setState({backgroundColor: 'red' }) :
@@ -97,13 +109,12 @@ class App extends Component {
            {/* ----in line 63, TEXT is the prop on Welcome is defined */}
           <Welcome text="Welcome to Using Props"/> 
           {this.state.newText &&
-         <h1>THIS IS THE NEW APP</h1>
+         <h1>THIS IS THE NEW TEXT</h1>
           }
          
           {/*The Welcome variable declared in line 53 is parsed using {}  */}
           {/* <h1 className="App-tittle">{Welcome}</h1> */}
-        </header>
-        <p className="App-intro">
+          <p className="App-intro">
           To get started, edit <code>src?app.js</code> and save to reload
         </p>
         {this.state.toggle &&
@@ -113,6 +124,8 @@ class App extends Component {
         <button onClick={this.newText}>New Text</button>
         <button onClick={this.changeColor}> New Color</button>
         <button onClick={this.changeLogo}> New Logo</button>
+        </header>
+        
       </div>
     );
   } 
